@@ -1,0 +1,88 @@
+menu "PID controller Configuration"
+
+    config PID_GLOBAL_DIVISOR
+        int "Global divisor for all factors in PID controller"
+        default 1
+        help
+            Global divisor for all factors in PID controller. All factors are divided by this factor in order to use decimal values.
+            
+    config PID_PROP_ACTIVATE
+        bool "Activate proportional part in the controller equitation"
+        default y
+        help
+            Activate proportional part in the controller equitation
+    
+    config PID_FACTOR_PROP_MULT
+        int "Proportional factor of PID controller (Multiplicator)"
+        default 350
+        help
+            Proportional factor of PID controller (Multiplicator)
+
+    config PID_INT_ACTIVATE
+        bool "Activate integration part in the controller equitation"
+        default y
+        help
+            Activate proportional part in the controller equitation
+
+    config PID_FACTOR_INT_MULT
+        int "Integration coefficient of PID controller  (Multiplicator)"
+        default 200
+        help
+            Integration factor of PID controller, can either be time and prop part related or independent  (Multiplicator)
+
+    config PID_DIFF_ACTIVATE
+        bool "Activate differential part in the controller equitation"
+        default n
+        help
+            Activate differential part in the controller equitation
+
+    config PID_FACTOR_DIFF_MULT
+        int "Differential coefficient of PID controller (Multiplicator)"
+        default 200
+        help
+            Differential factor of PID controller, can either be time and prop part related or independent (Multiplicator)
+
+    choice PID_FACTOR_BASE
+        prompt "Please choose factor relation"
+        default PID_REL_TIME
+        help
+            PID factors can either be time and prop part related or independent
+        config PID_REL_TIME
+            bool "TIME"
+        config PID_REL_INDEPENDENT
+            bool "INDEPENDENT"
+    endchoice
+    
+    config PID_UP_LIM_MULT
+        int "Upper Limit (Multiplicator)"
+        default 95
+        help
+            Upper limit (Multiplicator)
+    
+    config PID_LO_LIM_MULT
+        int "Lower Limit (Multiplicator)"
+        default 0
+        help
+            Lower limit (Multiplicator)
+
+    config PID_TARGET_VAL_MULT
+        int "PID target value (Multiplicator)"
+        default 90
+        help
+            PID target value (Multiplicator)
+
+    config PID_OP_RNG_UP_LIM_MULT
+        int "PID operating range upper limit (Multiplicator)"
+        default 92
+        help
+            PID operating range upper limit (Multiplicator)
+    
+    config PID_OP_RNG_LO_LIM_MULT
+        int "PID operating range lower limit (Multiplicator)"
+        default 92
+        help
+            PID operating range lower limit (Multiplicator)
+        
+
+
+endmenu
